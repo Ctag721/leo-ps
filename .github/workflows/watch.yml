@@ -1,0 +1,17 @@
+name: PS5 Pro stock watch
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # 每 5 分钟（GitHub 高峰期可能会延迟）
+  workflow_dispatch:         # 允许在 Actions 页面手动运行，会发一条测试推送
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JB Hi-Fi stock
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: python3 check.py
