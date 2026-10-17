@@ -11,7 +11,21 @@ jobs:
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v5
-      - name: Check JB Hi-Fi stock
+
+      # 取回上一次检查的结果，用来判断页面有没有变化
+      - uses: actions/cache/restore@v4
+        with:
+          path: state.json
+          key: state-${{ github.run_id }}
+          restore-keys: state-
+
+      - name: Check stock
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
         run: python3 check.py
+
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: state.json
+          key: state-${{ github.run_id }}
