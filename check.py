@@ -25,6 +25,7 @@ JB_URL = "https://www.jbhifi.com.au/products/ps5-playstation-5-pro-console"
 OTHER_STORES = {
     "EB Games": "https://www.ebgames.com.au/product/ps5/313202-playstation-5-pro-console",
     "Kmart": "https://www.kmart.com.au/product/playstation-5-pro-console-white-110012215/",
+    "Big W": "https://www.bigw.com.au/product/playstation-5-pro-console/p/104141",
 }
 
 # 网页里出现这些字样，就认为可能有货
